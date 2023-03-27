@@ -24,9 +24,14 @@ const Sidebar = () => {
             path: "/users",
             icon: <Users size={28} />,
         },
-        products: {
-            title: "Products",
-            path: "/products",
+        adminusers: {
+            title: "Adminuser",
+            path: "/adminuser",
+            icon: <Users size={28} />,
+        },
+        AddCrop: {
+            title: " AddCrop",
+            path: "/addcrop",
             icon: <Tag size={26} />,
         },
     };
@@ -46,7 +51,9 @@ const Sidebar = () => {
                     <div className="pt-3 space-y-2">
                         <SidebarItem {...items.home} />
                         <SidebarItem {...items.users} />
-                        <SidebarItem {...items.products} />
+                        <SidebarItem {...items.adminusers} />
+                        <SidebarItem {...items.AddCrop} />
+
                     </div>
                 </div>
                 {/* <div className="pb-3 w-full space-y-2">
@@ -58,7 +65,8 @@ const Sidebar = () => {
                 <div className="flex items-center justify-center gap-10 font-bold h-full">
                     <SidebarItem {...items.home} />
                     <SidebarItem {...items.users} />
-                    <SidebarItem {...items.products} />
+                    <SidebarItem {...items.adminusers} />
+                    <SidebarItem {...items.AddCrop} />
                 </div>
             </div>
         </>

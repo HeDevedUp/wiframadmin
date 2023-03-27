@@ -9,7 +9,7 @@
             "@user/*": ["src/features/user"],
             "@settings/*": ["src/features/settings"],
             "@users/*": ["src/features/users"],
-            "@products/*": ["src/features/products"]
+            "@addcrop/*": ["src/features/addcrop"],
         }
     },
     "exclude": ["node_modules"]

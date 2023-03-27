@@ -5,38 +5,45 @@ import Home from "@home/Home";
 import Profile from "@user/Profile";
 import Settings from "@settings/Settings";
 import Users from "@users/Users";
+import AddCrop from "./features/addcrop/AddCrop";
+import Login from "./features/auth/login";
+import SignUpNoW from "./features/auth/registration";
+import { Router } from 'react-router-dom';
+import AdminUsers from "./features/adminUser/AdminUser";
+// import Home from "./features/home/Home";
+
+// import AddCrop from  "@addcrop/AddCrop";
+
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={<Dashboard />}>
-                    <Route path="" element={<Home />} />
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="settings" element={<Settings />} />
-                    <Route path="users" element={<Users />} />
-                    <Route
-                        path="products"
-                        element={
-                            <h1 className="p-6 text-3xl font-extrabold">
-                                Products
-                            </h1>
-                        }
-                    />
-                </Route>
-                <Route path="login" element={<h1>Login</h1>} />
-                <Route path="register" element={<h1>Register</h1>} />
+    <BrowserRouter>
+    <Routes>
+    <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUpNoW />} />
+        <Route exact path="/" element={<Dashboard />}>
+            <Route path="" element={<Home />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="users" element={<Users />} />
+            <Route path="adminuser" element={<AdminUsers />} />
+            <Route path="/addcrop" element={<AddCrop />} />
 
-                <Route
-                    path="*"
-                    element={
-                        <div className="px-8 py-5">
-                            <h1>Not found.</h1>
-                        </div>
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
+        </Route>
+  
+
+        <Route
+            path="*"
+            element={
+                <div className="px-8 py-5">
+                    <h1>Not found.</h1>
+                </div>
+            }
+        />
+    </Routes>
+</BrowserRouter>
+
+
     );
 }
 

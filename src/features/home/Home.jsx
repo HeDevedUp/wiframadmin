@@ -13,12 +13,12 @@ const DashboardHome = () => {
             <div className="mt-10 pl-6">
                 <div className="pr-6">
                     <p className="text-sm font-semibold">
-                        Pending Approvals {""}
+                        stat dont lie {""}
                         <a
                             href="#"
                             className="text-accent-light cursor-pointer hover:underline"
                         >
-                            Assigned to me
+                            Crops Analysis 
                         </a>
                     </p>
                 </div>
@@ -31,7 +31,7 @@ const DashboardHome = () => {
             <div className="mt-5 divider px-6"></div>
             <div className="mt-5 px-6">
                 <div>
-                    <p className="text-sm font-semibold">Expiring HR Records</p>
+                    <p className="text-sm font-semibold"> Crops Growth  </p>
                 </div>
                 <Suspense fallback={<LoadingSpinner />}>
                     <SalesCharts />
@@ -42,7 +42,7 @@ const DashboardHome = () => {
                 <div>
                     <div>
                         <p className="text-sm font-semibold">
-                            Expiring HR Records
+                        Sales Dashboard
                         </p>
                     </div>
                     <div className="mt-5">

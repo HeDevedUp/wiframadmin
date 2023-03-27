@@ -19,7 +19,7 @@ const CardsList = () => {
         },
 
         {
-            title: "Tickets Open",
+            title: "Client Farm",
             value: "36",
             icon: "ticket",
             color: "bg-red-600",

@@ -42,7 +42,7 @@ const SalesCharts = () => {
                             <PieChart />
                         </div>
                         <p className="mt-3 text-sm font-semibold">
-                            Values are in USD
+                            Values are in NGN
                         </p>
                     </Card>
                 </div>

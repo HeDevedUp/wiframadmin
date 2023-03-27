@@ -3,9 +3,9 @@ import "./PieChart.less";
 
 const Chart = () => {
     const data = [
-        { name: "Jeans", value: 400, fill: "#a855f7" },
-        { name: "Jackets", value: 300, fill: "#ff5858" },
-        { name: "Sneakers", value: 750, fill: "#10b981" },
+        { name: "beans", value: 400, fill: "#a855f7" },
+        { name: "rice", value: 300, fill: "#ff5858" },
+        { name: "yam", value: 750, fill: "#10b981" },
     ];
 
     return (
