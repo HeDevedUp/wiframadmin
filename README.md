@@ -39,5 +39,5 @@ Zustand is used for state-management
 ...more changes to come.
 
 ## Quick preview
-![Home - Dashboard](https://i.imgur.com/2a1ineR.png)
-![Users - Dashboard](https://i.imgur.com/y1Lx30B.png)
+![Home - Dashboard](https://i.imgur.com/2a1ineR.ng)
+![Users - Dashboard](https://i.imgur.com/y1Lx30B.ng)
