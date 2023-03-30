@@ -18,7 +18,7 @@ const getMarketSlice = createSlice({
     getMarketReceived: (state, action) => {
       state.loading = false;
       state.MarketData = action.payload;
-      // console.log('inside state market', state.MarketData)
+      // console.log('inside state marketdata', state.MarketData)
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
@@ -39,9 +39,38 @@ export const getMarketData = () => async (dispatch) => {
       const token = getToken.data.jwtToken;
       dispatch(
         apiCallBegan({
-          url: "api/market/getallmarketcrops/",
+          url: "/api/market/getallmarketcrops",
           extraheaders: "jwtToken" + token,
           method: "get",
+          onStart: getMarketRequested.type,
+          onSuccess: getMarketReceived.type,
+          onError: getMarketRequestFailed.type,
+        })
+      );
+    } else {
+      const error = new Error("Unable to retrieve user token");
+      console.error(error);
+      dispatch(getMarketRequestFailed(error.message));
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching user profile:", error);
+    dispatch(getMarketRequestFailed(error.message));
+  }
+};
+
+export const UploadMarketData = (values) => async (dispatch) => {
+  console.log('UploadMarketData',values )
+
+  try {
+    const getToken = await retrieveUserDetails();
+    if (getToken && getToken.data.jwtToken) {
+      const token = getToken.data.jwtToken;
+      dispatch(
+        apiCallBegan({
+          url: "/api/market/createcrop/",
+          extraheaders: "jwtToken" + token,
+          method: "post",
+          data:values,
           onStart: getMarketRequested.type,
           onSuccess: getMarketReceived.type,
           onError: getMarketRequestFailed.type,

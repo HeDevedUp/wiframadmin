@@ -8,16 +8,15 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUpNoW = () => {
     const dispatch = useDispatch();
-    const success = useSelector((state) => state.authReducers.Authentication.success)
+    const success = useSelector((state) => state.authReducers.Authentication.registrationStatus)
     const error = useSelector((state) => state.authReducers.Authentication.error);
-    console.log(error)
     const navigate = useNavigate();
 
     useEffect(() => {
         if (success) {
            toast.success("Registration successful!");
            navigate("/login");
-           dispatch(setSuccess(false));
+        //    dispatch(setSuccess(false));
          } else if (error) {
            toast.error(error);
         //    dispatch(removeError())
@@ -118,7 +117,7 @@ const SignUpNoW = () => {
                                     <div className="relative mt-1">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
                                             type="phone"
                                             name="phoneNumber"
                                             placeholder="Phone number" />
@@ -137,8 +136,8 @@ const SignUpNoW = () => {
                                     <div className="relative">
                                         <Field
 
-                                            className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12  text-sm shadow-sm"
-                                            type="text"
+className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
+type="text"
                                             name="firstName"
                                             placeholder="First Name" />
 
@@ -154,7 +153,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full  border-gray-200 bg-white text-black  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="text"
                                             name="lastName"
                                             placeholder="Last Name" />
@@ -171,7 +170,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full  border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full  border-gray-200 bg-white text-black  rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="text"
                                             name="userName"
                                             placeholder="Username" />
@@ -189,7 +188,7 @@ const SignUpNoW = () => {
                                     <div className="relative">
 
                                         <Field
-                                            className="w-full   border-gray-200 bg-white text-slate-900  rounded-lg p-4 pr-12 text-sm shadow-sm"
+                                            className="w-full   border-gray-200 bg-white text-black rounded-lg p-4 pr-12 text-sm shadow-sm"
                                             type="password"
                                             name="password"
                                             placeholder="Password" />

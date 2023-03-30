@@ -1,7 +1,24 @@
-import Dropdown from "@components/ui/dropdown/Dropdown";
+import { useState } from "react";
 import { MoreVertical } from "react-feather";
+import CrudDropdown from "@/shared/components/ui/dropdown/CrudDropdown";
+import UserDeleteModal from "../modals/UserDeleteModal";
+import UserEditModal from "../modals/UserEditModal";
+import useStore from "@users/store";
 
-const UserRow = ({ user }) => {
+const UserRow = ({ marketdata }) => {
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+    const removeUser = useStore((state) => state.removeUser);
+
+    const deleteUser = (user) => {
+        removeUser(user.id);
+    };
+
+    const editUser = (user) => {
+        console.log("edit user", user.name);
+    };
+
     return (
         <tr>
             <th>
@@ -43,10 +60,7 @@ const UserRow = ({ user }) => {
 
          
             <th>
-                <Dropdown
-                    short
-                    removeUser={user}
-                    dialog
+                <CrudDropdown
                     element={
                         <div className="btn btn-ghost btn-xs cursor-pointer">
                             <span className="text-xs font-bold">
@@ -54,7 +68,21 @@ const UserRow = ({ user }) => {
                             </span>
                         </div>
                     }
+                    onEditClick={() => setEditModalOpen(true)}
+                    onDeleteClick={() => setDeleteModalOpen(true)}
                 />
+                <UserDeleteModal
+                    marketdata={marketdata}
+                    openNow={isDeleteModalOpen}
+                    onClose={() => setDeleteModalOpen(false)}
+                    onDelete={(u) => deleteUser(u)}
+                ></UserDeleteModal>
+                <UserEditModal
+                    marketdata={marketdata}
+                    openNow={isEditModalOpen}
+                    onClose={() => setEditModalOpen(false)}
+                    onEdit={(u) => editUser(u)}
+                ></UserEditModal>
             </th>
         </tr>
     );

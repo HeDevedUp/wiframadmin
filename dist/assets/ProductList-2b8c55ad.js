@@ -1,0 +1,1 @@
+import{a}from"./index-8f7dedf1.js";import{T as e}from"./Table-45ad65b9.js";const o=({MarketData:t})=>a(e,{MarketData:!0,headers:["Crop","Planted","Havest Date","Price"],items:t});export{o as default};

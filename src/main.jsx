@@ -7,6 +7,7 @@ import store from "./redux/configureStore";
 import checkLogin from "./utils/checklogin";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Provider store={store} >
          <ToastContainer/>
+         <Toaster/>
             <App />
        
         </Provider>

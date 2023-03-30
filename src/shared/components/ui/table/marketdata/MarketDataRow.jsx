@@ -1,7 +1,8 @@
 import Dropdown from "@components/ui/dropdown/Dropdown";
 import { MoreVertical } from "react-feather";
 
-const UserRow = ({ user }) => {
+const MarketDataRow = ({ marketdata }) => {
+    console.log(marketdata.imageUrl)
     return (
         <tr>
             <th>
@@ -41,16 +42,15 @@ const UserRow = ({ user }) => {
             <td>{marketdata.harvestDate}</td>
             <td>NGN{marketdata.cropPrice}</td>
 
-         
             <th>
                 <Dropdown
                     short
-                    removeUser={user}
+                    removeUser={marketdata}
                     dialog
                     element={
                         <div className="btn btn-ghost btn-xs cursor-pointer">
                             <span className="text-xs font-bold">
-                                <MoreVertical size={20} />
+                                <MoreVertical size={30} />
                             </span>
                         </div>
                     }
@@ -60,4 +60,4 @@ const UserRow = ({ user }) => {
     );
 };
 
-export default UserRow;
+export default MarketDataRow;

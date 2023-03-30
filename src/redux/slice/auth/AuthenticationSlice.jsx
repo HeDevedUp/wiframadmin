@@ -21,6 +21,11 @@ const AuthenticationSlice = createSlice({
 name: "Authentication",
 initialState,
 reducers: {
+
+  removeError: (state,action) => {
+    state.error = "" ;
+      },
+
 loginRequested: (state, action) => {
 state.loading = true;
 },
@@ -43,14 +48,11 @@ logUserOut: (state) => {
   state.isLoggedIn = false;
   state.userData = "";
 },
-removeError: (state) => {
-  state.error = null ;
-    },
+
 
 registrationRequested: (state, action) => {
   state.loading = true;
   state.registrationStatus =false;
-
 },
 registrationReceived: (state, action) => {
   state.loading = false;
@@ -66,11 +68,11 @@ registrationRequestFailed: (state, action) => {
 });
 
 const {
+removeError,
 loginRequested,
 loginReceived,
 loginRequestFailed,
 logUserOut,
-removeError,
 registrationRequested,
 registrationReceived,
 registrationRequestFailed,
@@ -83,6 +85,10 @@ export default AuthenticationSlice.reducer;
 export const logout = () => (dispatch, getState) => {
 dispatch(logUserOut());
 };
+
+export const RemoveError = () => (dispatch, getState) => {
+  dispatch(removeError());
+  };
 
 export const checkLogin = () => async (dispatch) => {
 const userDetails = await retrieveUserDetails();

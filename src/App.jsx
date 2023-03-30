@@ -5,11 +5,13 @@ import Home from "@home/Home";
 import Profile from "@user/Profile";
 import Settings from "@settings/Settings";
 import Users from "@users/Users";
-import AddCrop from "./features/addcrop/AddCrop";
+import AddCrop from "./features/MarketCrop/AddCrop/AddCrop";
 import Login from "./features/auth/login";
 import SignUpNoW from "./features/auth/registration";
 import { Router } from 'react-router-dom';
 import AdminUsers from "./features/adminUser/AdminUser";
+import MarketDData from "./features/MarketCrop/GetMarketCrop/GetMarket";
+
 // import Home from "./features/home/Home";
 
 // import AddCrop from  "@addcrop/AddCrop";
@@ -28,6 +30,8 @@ function App() {
             <Route path="users" element={<Users />} />
             <Route path="adminuser" element={<AdminUsers />} />
             <Route path="/addcrop" element={<AddCrop />} />
+            <Route path="/marketdata" element={<MarketDData />} />
+
 
         </Route>
   

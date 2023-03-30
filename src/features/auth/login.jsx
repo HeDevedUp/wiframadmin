@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/slice/auth/AuthenticationSlice";
+import { login, RemoveError } from "../../redux/slice/auth/AuthenticationSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,16 +13,16 @@ const Login = () => {
 
   const { loading, isLoggedIn} = useSelector((state) => state.authReducers.Authentication);
   const failed = useSelector((state) => state.authReducers.Authentication.error);
-
+console.log(isLoggedIn,failed)
   useEffect(() => {
     if (isLoggedIn) {
       toast.success("Login successful!");
        navigate("/");
      } else if (failed) {
        toast.error(failed);
-      //  dispatch(removeError())
+       RemoveError()
      }
- }, [isLoggedIn, failed, navigate]);
+ }, [isLoggedIn,  navigate]);
 
 
   
@@ -38,7 +38,6 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
       
       <section  className="mx-auto max-w-screen-xl flex flex-col items-center  px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg justify-center ">
@@ -76,8 +75,7 @@ const Login = () => {
                   <label htmlFor="email" className="sr-only text-lg"> Username</label>
                   <div className="relative">
                     <Field
-
-                      className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12  text-sm shadow-sm"
+                      className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
                       type="text"
                       name="userName"
                       placeholder="Username" />
@@ -112,8 +110,8 @@ const Login = () => {
                   <div className="relative">
 
                     <Field
-                      className="w-full  border-gray-200 bg-white  rounded-lg p-4 pr-12 text-sm shadow-sm"
-                      type="password"
+                     className="w-full rounded-lg  border-gray-200 bg-white  p-4 pr-12 text-base text-black shadow-sm"
+                     type="password"
                       name="userPassword"
                       placeholder="Password"
 

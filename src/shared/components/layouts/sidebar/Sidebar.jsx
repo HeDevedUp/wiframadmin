@@ -34,6 +34,11 @@ const Sidebar = () => {
             path: "/addcrop",
             icon: <Tag size={26} />,
         },
+        MarketData: {
+            title: "MarketData",
+            path: "/marketdata",
+            icon: <Tag size={26} />,
+        },
     };
 
     return (
@@ -53,6 +58,8 @@ const Sidebar = () => {
                         <SidebarItem {...items.users} />
                         <SidebarItem {...items.adminusers} />
                         <SidebarItem {...items.AddCrop} />
+                        <SidebarItem {...items.MarketData} />
+
 
                     </div>
                 </div>

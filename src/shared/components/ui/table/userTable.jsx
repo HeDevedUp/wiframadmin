@@ -4,7 +4,7 @@ import "./table.less";
 import UserRow from "@users/components/table/UserRow";
 import TableSearch from "./TableSearch";
 import AddButton from "./actions/AddButton";
-import MarketDataRow from "../../../../features/MarketCrop/GetMarketCrop/components/table/MarketDataRow"
+import MarketDataRow from "./marketdata/MarketDataRow";
 
 const Table = ({ headers, items, MarketData }) => {
     const [isAllChecked, setAllChecked] = useState(false);
@@ -43,9 +43,9 @@ const Table = ({ headers, items, MarketData }) => {
     };
 
     const getItems = () => {
-        if (!search.trim()) return items.data;
+        if (!search.trim()) return items;
 
-        let filtered = items.data.filter((u) => {
+        let filtered = items.filter((u) => {
             return Object.keys(u).some((key) => {
                 if (typeof u[key] === "string") {
                     return u[key].toLowerCase().includes(search);
@@ -81,9 +81,9 @@ const Table = ({ headers, items, MarketData }) => {
                     <tfoot>
                         <tr>
                             <th></th>
-                            {/* {headers.map((h, index) => (
+                            {headers.map((h, index) => (
                                 <th key={index}>{h}</th>
-                            ))} */}
+                            ))}
                             <th></th>
                         </tr>
                     </tfoot>
