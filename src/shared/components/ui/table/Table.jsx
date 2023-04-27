@@ -5,15 +5,19 @@ import UserRow from "@users/components/table/UserRow";
 import TableSearch from "./TableSearch";
 import AddButton from "./actions/AddButton";
 import MarketDataRow from "../../../../features/MarketCrop/GetMarketCrop/components/table/MarketDataRow"
+import LoadingSpinner from "../loading/LoadingSpinner";
+import { useDispatch, useSelector } from "react-redux";
 
-const Table = ({ headers, items, MarketData }) => {
+const Table = ({ headers, items, marketData }) => {
     const [isAllChecked, setAllChecked] = useState(false);
+  const { loading } = useSelector(state => state.marketReducers.getMarketSlice);
+
     const [search, setSearch] = useState("");
+    console.log(items)
 
-    let allCheckedRef = useRef();
+    const allCheckedRef = useRef(null);
 
-    const selectAll = (ref) => {
-        allCheckedRef = ref;
+    const selectAll = () => {
         const checked = allCheckedRef.current.checked;
         setAllChecked(checked);
     };
@@ -43,9 +47,9 @@ const Table = ({ headers, items, MarketData }) => {
     };
 
     const getItems = () => {
-        if (!search.trim()) return items.data;
+        if (!search.trim()) return items;
 
-        let filtered = items.data.filter((u) => {
+        let filtered = items?.filter((u) => {
             return Object.keys(u).some((key) => {
                 if (typeof u[key] === "string") {
                     return u[key].toLowerCase().includes(search);
@@ -69,12 +73,21 @@ const Table = ({ headers, items, MarketData }) => {
                         header
                         headers={headers}
                         handleCheckbox={selectAll}
+                        allCheckedRef={allCheckedRef}
                     />
                     <tbody>
                         {/* <!-- row 1 --> */}
-                        {getItems().map(
-                            (item, index) =>
-                            MarketData && <MarketDataRow key={index} marketdata={item} />
+                        {loading? (
+                            <tr>
+                                <td colSpan={headers.length + 1} className="text-center">
+                                    <LoadingSpinner />
+                                </td>
+                            </tr>
+                        ) : (
+                            getItems()?.map((item, index) => (
+                                console.log(item)
+                                // <MarketDataRow key={index} marketdata={item} />
+                            ))
                         )}
                     </tbody>
                     {/* <!-- foot --> */}

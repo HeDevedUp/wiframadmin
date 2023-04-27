@@ -95,19 +95,19 @@ const cropNames = {
 
 const initialValues = {
   available: false,
-  cropCategory: "",
-  cropEstimatedDuration: 0,
+  planted: false,
   cropName: "",
-  cropPrice: 0,
-  dailyInterestRate: 0,
-  datePlanted: "",
-  harvestDate:"",
+  cropCategory: "",
   description:'',
+  cropPrice: 0,
   imageUrl: "",
   photo:"",
-  lifeCycleYieldRate: 0,
+  dailyInterestRate: 0,
+  cropEstimatedDuration: 0,
+  datePlanted: "",
+  harvestDate:"",
   monthlyInterestRate: 0,
-  planted: false,
+  lifeCycleYieldRate: 0,
   primaryLocation:"",
   squareMeters: 0
 };
@@ -230,8 +230,8 @@ const AddCrop = () => {
         {errors.name && touched.name && (
           <div className="text-red-500">{errors.name}</div>
         )}
-
           </div>
+
           <div className="w-full sm:w-1/2">
             <label htmlFor="cropPrice" className="block text-base font-medium text-white">
             cropPrice*
@@ -332,12 +332,12 @@ const AddCrop = () => {
         </div>
       
         <div className="w-full sm:w-1/2">
-                <label htmlFor="planted" className="block text-base font-medium text-white">
-                Planted*
-                </label>
-                <Field type="checkbox" name="planted" id="planted"  className=" h-10 border-2 bg-white  text-base text-black shadow-lg mt-1 p-2 block w-full rounded-md border-gray-300"/>
-                <ErrorMessage name="planted" component="p"className="text-red-500 text-sm mt-1" />
-                </div> 
+        <label htmlFor="squareMeters" className="block text-base font-medium text-white">
+              Square Meters*
+            </label>
+            <Field type="number" name="squareMeters" id="squareMeters"  className="  border-2 bg-white  text-base text-black shadow-lg mt-1 p-2 block w-full rounded-md border-gray-300"/>
+            <ErrorMessage name="squareMeters" component="p" className="text-red-500 text-sm mt-1" />
+            </div>
 
         <div className="flex  w-full justify-center mt-10">
         <button   disabled={isSubmitting} type="submit" className="py-3 w-full  px-6 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">

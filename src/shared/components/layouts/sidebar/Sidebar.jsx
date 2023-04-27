@@ -55,8 +55,8 @@ const Sidebar = () => {
                     </div>
                     <div className="pt-3 space-y-2">
                         <SidebarItem {...items.home} />
-                        <SidebarItem {...items.users} />
-                        <SidebarItem {...items.adminusers} />
+                        {/* <SidebarItem {...items.users} /> */}
+                        {/* <SidebarItem {...items.adminusers} /> */}
                         <SidebarItem {...items.AddCrop} />
                         <SidebarItem {...items.MarketData} />
 
@@ -71,8 +71,8 @@ const Sidebar = () => {
             <div className="xs:hidden fixed bottom-0 h-16 w-full bg-primary/80 backdrop-blur-md z-20">
                 <div className="flex items-center justify-center gap-10 font-bold h-full">
                     <SidebarItem {...items.home} />
-                    <SidebarItem {...items.users} />
-                    <SidebarItem {...items.adminusers} />
+                    {/* <SidebarItem {...items.users} /> */}
+                    {/* <SidebarItem {...items.adminusers} /> */}
                     <SidebarItem {...items.AddCrop} />
                 </div>
             </div>

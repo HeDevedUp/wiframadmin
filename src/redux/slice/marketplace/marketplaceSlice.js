@@ -17,17 +17,38 @@ const getMarketSlice = createSlice({
     },
     getMarketReceived: (state, action) => {
       state.loading = false;
-      state.MarketData = action.payload;
-      // console.log('inside state marketdata', state.MarketData)
+      state.MarketData = action.payload.data;
+      console.log('inside state marketdata', state.MarketData)
     },
     getMarketRequestFailed: (state, action) => {
       state.loading = false;
       console.log("getMarketRequestFailed", action.payload);
     },
+
+    UploadMarketRequested: (state, action) => {
+      state.loading = true;
+    },
+    UploadMarketReceived: (state, action) => {
+      state.loading = false;
+      // console.log('inside state marketdata', state.MarketData)
+    },
+    UploadMarketRequestFailed: (state, action) => {
+      state.loading = false;
+      console.log("getMarketRequestFailed", action.payload);
+    },
+
+
   },
 });
 
-const { getMarketRequested, getMarketReceived, getMarketRequestFailed } =
+const { 
+  UploadMarketRequestFailed,
+  UploadMarketReceived,
+  UploadMarketRequested,
+  getMarketRequested, 
+  getMarketReceived,
+   getMarketRequestFailed
+ } =
   getMarketSlice.actions;
 
 export default getMarketSlice.reducer;
@@ -71,6 +92,37 @@ export const UploadMarketData = (values) => async (dispatch) => {
           extraheaders: "jwtToken" + token,
           method: "post",
           data:values,
+          onStart: UploadMarketRequested.type,
+          onSuccess: UploadMarketReceived.type,
+          onError: UploadMarketRequestFailed.type,
+        })
+      );
+    } else {
+      const error = new Error("Unable to retrieve user token");
+      console.error(error);
+      dispatch(getMarketRequestFailed(error.message));
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching user profile:", error);
+    dispatch(getMarketRequestFailed(error.message));
+  }
+};
+
+
+
+export const UpdateMarketData = (values) => async (dispatch) => {
+  console.log('UpdatedMarketData',values )
+
+  try {
+    const getToken = await retrieveUserDetails();
+    if (getToken && getToken.data.jwtToken) {
+      const token = getToken.data.jwtToken;
+      dispatch(
+        apiCallBegan({
+          url: "/api/market/updatemarketcrop/",
+          extraheaders: "jwtToken" + token,
+          method: "post",
+          data:values,
           onStart: getMarketRequested.type,
           onSuccess: getMarketReceived.type,
           onError: getMarketRequestFailed.type,
@@ -86,3 +138,4 @@ export const UploadMarketData = (values) => async (dispatch) => {
     dispatch(getMarketRequestFailed(error.message));
   }
 };
+

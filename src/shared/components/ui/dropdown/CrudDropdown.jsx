@@ -2,9 +2,22 @@ import { Menu } from "@headlessui/react";
 import clsx from "clsx";
 import Dropdown from "@/shared/components/ui/dropdown/Dropdown";
 
-const CrudDropdown = ({ element, onEditClick, onDeleteClick }) => {
+const CrudDropdown = ({ element, onEditClick, onDeleteClick, onAddMarketdataClick }) => {
     return (
         <Dropdown element={element}>
+                <Menu.Item>
+                {({ active }) => (
+                    <a
+                        className={clsx(
+                            active ? "bg-accent" : "text-primary-t",
+                            "block px-4 py-2 text-sm cursor-pointer"
+                        )}
+                        onClick={() => onAddMarketdataClick()}
+                    >
+                        Add New
+                    </a>
+                )}
+            </Menu.Item>
             <Menu.Item>
                 {({ active }) => (
                     <a

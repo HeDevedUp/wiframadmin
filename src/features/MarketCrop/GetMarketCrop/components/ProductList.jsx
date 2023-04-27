@@ -1,11 +1,11 @@
 import Table from "@components/ui/table/Table";
 
-const ProductList = ({ MarketData }) => {
+const ProductList = ({ marketData }) => {
     return (
         <Table
-            MarketData
+            marketData
             headers={["Crop", "Planted", "Havest Date","Price"]}
-            items={MarketData}
+            items={marketData}
         />
     );
 };
